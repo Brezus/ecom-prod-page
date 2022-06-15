@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 
-export default function AboutShoe() {
+export default function AboutShoe({ logic }) {
   const cartIcon = <img src="./images/icon-cart.svg" alt="cart-icon" />;
   return (
     <section>
@@ -12,15 +12,17 @@ export default function AboutShoe() {
         weather can offer.
       </p>
       <p>
-        $125.00 <span>50%</span>
+        {"$" + logic.shoePrice + ".00"} <span>50%</span>
       </p>
-      <p>$250.00</p>
+      <p>{logic.originalPrice}</p>
       <div className="quantity-cont">
-        <button>+</button>
-        <p className="item-count">0</p>
-        <button>-</button>
+        <button onClick={logic.addItem}>+</button>
+        <p className="item-count">{logic.itemCount}</p>
+        <button onClick={logic.minusItem}>-</button>
       </div>
-      <button className="addToCart">{cartIcon}add to cart</button>
+      <button className="addToCart" onClick={logic.addToCart}>
+        {cartIcon}add to cart
+      </button>
     </section>
   );
 }

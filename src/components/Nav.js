@@ -1,13 +1,20 @@
 import React from "react";
+import Cart from "./Cart";
 
-export default function Nav() {
+export default function Nav({ cartInfo }) {
   const logo = <img src="./images/logo.svg" alt="logo" />;
   const cartIcon = <img src="./images/icon-cart.svg" alt="cart-icon" />;
-  const profPhoto = <img src="./images/image-avatar.png" alt="prof-photo" />;
+  const profPhoto = (
+    <img
+      src="./images/image-avatar.png"
+      alt="prof-pic"
+      onClick={cartInfo.toggleCart}
+    />
+  );
 
   return (
     <nav>
-      <a href="#">{logo}</a>
+      {logo}
       <ul>
         <li>Collections</li>
         <li>Men</li>
@@ -18,6 +25,7 @@ export default function Nav() {
       <div>
         {cartIcon}
         <div className="profile-photo">{profPhoto}</div>
+        {cartInfo.openCart && <Cart cartDetails={cartInfo} />}
       </div>
     </nav>
   );

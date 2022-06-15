@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Main from "./components/Main";
+import Nav from "./components/Nav";
+import React, { useState } from "react";
 
 function App() {
+  const [itemCount, setItemCount] = useState(0);
+  function addItem() {
+    setItemCount((prevCount) => prevCount + 1);
+  }
+  function minusItem() {
+    setItemCount((prevCount) => prevCount - 1);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Nav />
+      <Main item={{ itemCount, addItem, minusItem }} />
     </div>
   );
 }

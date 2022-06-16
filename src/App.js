@@ -18,6 +18,7 @@ export default function App() {
   }
 
   function addToCart() {
+    if (itemCount === 0) return;
     setCart(true);
   }
   function removeFromCart() {

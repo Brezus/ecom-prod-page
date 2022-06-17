@@ -1,3 +1,17 @@
+:root {
+  --Orange: hsl(26, 100%, 55%);
+  --Pale-orange: hsl(25, 100%, 94%);
+  --Very--vark--blue: hsl(220, 13%, 13%);
+  --Dark-grayish-blue: hsl(219, 9%, 45%);
+  --Grayish-blue: hsl(220, 14%, 75%);
+  --Light-grayish-blue: hsl(223, 64%, 98%);
+  --White: hsl(0, 0%, 100%);
+  --Black: hsl(0, 0%, 0%);
+  --fs: 16px;
+  --ff: "Kumbh Sans", sans-serif;
+  --fws: 400;
+  --fwl: 700;
+}
 /* Box sizing rules */
 *,
 *::before,
@@ -71,4 +85,75 @@ select {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+/* ======== navigation component styles ======== */
+.burger-menu {
+  display: inline-block;
+  cursor: pointer;
+}
+.burger-menu div {
+  width: 20px;
+  height: 3px;
+  background-color: #333;
+  margin: 3px 0;
+  transition: 0.4s;
+}
+.burger-menu.change .line1 {
+  -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+  transform: rotate(-45deg) translate(-9px, 6px);
+}
+
+.burger-menu.change .line2 {
+  opacity: 0;
+}
+
+.burger-menu.change .line3 {
+  -webkit-transform: rotate(45deg) translate(-6px, -5px);
+  transform: rotate(45deg) translate(-6px, -5px);
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 1em;
+  height: 30px;
+}
+.nav__ul {
+  display: none;
+}
+.nav__cart-icon {
+  margin-left: auto;
+  width: 10%;
+  height: 100%;
+  display: block;
+}
+.nav__profile-photo {
+  width: 10%;
+  height: 100%;
+}
+
+.nav__cart-icon,
+.logo,
+.prof-pic {
+  height: 100%;
+  object-fit: contain;
+}
+
+.logo {
+  margin-right: auto;
+  width: 40%;
+}
+.burger-menu {
+  padding-right: 1em;
+}
+
+/* ======== main component styles ======== */
+.main {
+  display: flex;
+  flex-direction: column-reverse;
+}
+/* ======== display shoe component styles ======== */
+.secondary-dp {
+  display: none;
 }

@@ -1,7 +1,7 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState } from "react"
 
 export default function AboutShoe({ logic }) {
-  const cartIcon = <img src="./images/icon-cart.svg" alt="cart-icon" />;
+  const cartIcon = "./images/icon-cart.svg"
   return (
     <section>
       <h4>Sneaker Company</h4>
@@ -21,8 +21,9 @@ export default function AboutShoe({ logic }) {
         <button onClick={logic.minusItem}>-</button>
       </div>
       <button className="addToCart" onClick={logic.addToCart}>
-        {cartIcon}add to cart
+        <img src={cartIcon} alt="cart-icon" />
+        add to cart
       </button>
     </section>
-  );
+  )
 }

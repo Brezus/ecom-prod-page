@@ -1,7 +1,7 @@
 import "./App.css"
 import Main from "./components/Main"
 import Nav from "./components/Nav"
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 
 export default function App() {
   const oGPrice = 250
@@ -14,18 +14,27 @@ export default function App() {
   const [openCart, setOpenCart] = useState(false)
   const [openMenu, setOpenMenu] = useState(false)
   const [currentCart, setCurrentCart] = useState({ total: 0, count: 0 })
-  const [cartTotal, setCartTotal] = useState(0)
+  const [notify, setNotify] = useState(false)
+  const [clickedCart, setClickedCart] = useState(0)
 
   function toggleCart() {
     setOpenCart((prev) => !prev)
+    console.log(openCart)
+    setNotify(false)
+    setClickedCart(0)
   }
-  function toggleMenu(el) {
+  function closeMenu() {
+    setOpenMenu(false)
+  }
+  function toggleMenu() {
     setOpenMenu((prev) => !prev)
   }
 
   function addToCart() {
     if (itemCount === 0) return
     setCart(true)
+    setNotify(true)
+    setClickedCart((prev) => prev + 1)
     setCurrentCart((prev) => {
       return {
         total: prev.total + shoePrice,
@@ -35,6 +44,7 @@ export default function App() {
   }
   function removeFromCart() {
     setCart(false)
+    setClickedCart((prev) => prev - 1)
     setCurrentCart((prev) => {
       return {
         total: 0,
@@ -58,9 +68,13 @@ export default function App() {
 
   return (
     <div>
+      <div className={openMenu ? "dark-bg" : ""}></div>
       <Nav
         cartInfo={{
           cart,
+          setCart,
+          setOpenCart,
+          setOpenMenu,
           itemCount,
           shoePrice,
           originalPrice,
@@ -71,6 +85,9 @@ export default function App() {
           currentCart,
           toggleMenu,
           openMenu,
+          notify,
+          closeMenu,
+          clickedCart,
         }}
       />
       <Main

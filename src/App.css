@@ -90,17 +90,22 @@ select {
 .burger-menu {
   display: inline-block;
   cursor: pointer;
+  height: 100%;
+  width: 5%;
+  z-index: 100;
+  border: none;
+  background-color: transparent;
 }
 .burger-menu div {
-  width: 20px;
-  height: 3px;
+  width: 100%;
+  height: 15%;
   background-color: #333;
   margin: 3px 0;
   transition: 0.4s;
 }
 .burger-menu.change .line1 {
-  -webkit-transform: rotate(-45deg) translate(-9px, 6px);
-  transform: rotate(-45deg) translate(-9px, 6px);
+  -webkit-transform: rotate(-45deg) translate(-5px, 2px);
+  transform: rotate(-45deg) translate(-5px, 2px);
 }
 
 .burger-menu.change .line2 {
@@ -108,52 +113,285 @@ select {
 }
 
 .burger-menu.change .line3 {
+  margin: 0;
   -webkit-transform: rotate(45deg) translate(-6px, -5px);
   transform: rotate(45deg) translate(-6px, -5px);
 }
 
-.nav {
+.notification-cart {
+  position: relative;
+}
+.notification-cart small {
+  position: absolute;
+  left: 30%;
+  top: 0;
+  height: 10px;
+  width: 15px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding-inline: 1em;
-  height: 30px;
+  text-align: center;
+  border-radius: 3px;
+  font-size: 10px;
+  background-color: var(--Orange);
+  color: white;
+}
+
+.nav {
+  padding: 1em 1.5em;
+  position: relative;
+  font-family: var(--ff);
+}
+.nav-cont {
+  display: flex;
+  align-items: center;
+  height: 20px;
+  gap: 1.2em;
 }
 .nav__ul {
   display: none;
+  position: absolute;
+  left: -100%;
+}
+.nav__ul.nav__ul-mobile {
+  display: block;
+  position: absolute;
+  z-index: 10;
+  transition: left 0.2s ease;
+  left: 0;
+  top: -30%;
+  background-color: white;
+  height: 110vh;
+  list-style: none;
+  padding-left: 0;
+  width: 70%;
+  padding: 4.5em 0 0 1.5em;
+}
+.dark-bg {
+  background-color: rgba(0, 0, 0, 0.869);
+  height: 110vh;
+  position: absolute;
+  top: 0%;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+
+.nav__ul.nav__ul-mobile .nav__button {
+  border: none;
+  background-color: transparent;
+  font-weight: var(--fwl);
+  font-family: var(--ff);
+  margin-bottom: 1.1em;
 }
 .nav__cart-icon {
   margin-left: auto;
-  width: 10%;
-  height: 100%;
-  display: block;
-}
-.nav__profile-photo {
-  width: 10%;
   height: 100%;
 }
-
-.nav__cart-icon,
-.logo,
 .prof-pic {
   height: 100%;
-  object-fit: contain;
 }
 
 .logo {
   margin-right: auto;
-  width: 40%;
 }
-.burger-menu {
-  padding-right: 1em;
+.cart {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: 120%;
+  transform: translateX(-50%);
+  width: 95%;
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 1em 0;
+}
+.full-cart,
+.empty-cart,
+.cart h4 {
+  width: 90%;
+  margin-inline: auto;
+}
+.cart h4 {
+  margin-bottom: 1.1em;
 }
 
+.full-cart__thumbnail {
+  height: 45px;
+  width: 45px;
+  border-radius: 5px;
+}
+.full-cart,
+.empty-cart {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--Dark-grayish-blue);
+  flex-wrap: wrap;
+  height: 150px;
+}
+.empty-cart {
+  font-weight: var(--fwl);
+  font-family: var(--ff);
+  justify-content: center;
+}
+.full-cart-item-title {
+  text-transform: capitalize;
+}
+.full-cart__total {
+  font-weight: var(--fwl);
+  color: black;
+}
+.full-cart button {
+  width: 100%;
+}
 /* ======== main component styles ======== */
 .main {
-  display: flex;
-  flex-direction: column-reverse;
+  display: grid;
+  grid-template-rows: 16rem auto;
 }
 /* ======== display shoe component styles ======== */
+.dp-section {
+  height: 100%;
+  grid-row: 1;
+  overflow: hidden;
+}
+.about-shoe {
+  grid-row: 2;
+}
+.main-dp {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.main-dp img {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+.carousel-buttons {
+  position: absolute;
+  top: 50%;
+  cursor: pointer;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.carousel-buttons img {
+  height: 40%;
+}
+.prev-carousel {
+  left: 4%;
+  transform: translate(-4%, -50%);
+}
+.next-carousel {
+  right: 4%;
+  transform: translate(-4%, -50%);
+}
 .secondary-dp {
   display: none;
 }
+/* ======== about shoe component styles ======== */
+section.about-shoe {
+  font-family: var(--ff);
+  padding: 1.5em;
+}
+.titles {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 0.8em;
+}
+.titles h4 {
+  color: var(--Orange);
+  font-weight: var(--fwl);
+  font-size: 0.7em;
+  text-transform: uppercase;
+}
+.titles h1 {
+  font-weight: var(--fwl);
+  line-height: 1.1;
+  color: var(--Very--vark--blue);
+  font-size: 1.8rem;
+}
+.item-desc {
+  margin: 1em 0;
+  color: var(--Very--vark--blue);
+  opacity: 0.8;
+  font-size: 0.9rem;
+}
+.price-cont {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+  margin-bottom: 1em;
+}
+.price {
+  font-weight: var(--fwl);
+  color: var(--Very--vark--blue);
+  font-size: 1.8rem;
+}
+.discount {
+  background-color: var(--Pale-orange);
+  color: var(--Orange);
+  font-size: 1rem;
+  padding: 0.1em 0.5em;
+  border-radius: 3px;
+  font-weight: var(--fwl);
+}
+.og-price {
+  margin-left: auto;
+  color: var(--Grayish-blue);
+  text-decoration: line-through;
+  font-weight: var(--fwl);
+}
+.quantity-cont {
+  display: flex;
+  background-color: var(--Light-grayish-blue);
+  padding: 0.5em;
+  border-radius: 10px;
+  align-items: center;
+  margin-bottom: 1em;
+}
+.quantity-cont button,
+.quantity-cont p {
+  flex: 1;
+  text-align: center;
+  background-color: transparent;
+  border: none;
+}
+.quantity-cont button {
+  color: var(--Orange);
+  font-size: 1.4em;
+  font-weight: var(--fwl);
+  text-align: left;
+}
+.quantity-cont button:last-of-type {
+  text-align: right;
+}
+.addToCart-checkout {
+  background-color: var(--Orange);
+  border: none;
+  width: 100%;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  padding: 0.5em;
+  color: white;
+  gap: 1em;
+  font-weight: var(--fwl);
+}
+/* .dp-section,
+.about-shoe {
+} */
+/* .dp-section {
+  flex: 1;
+}
+.about-shoe {
+  flex: 3;
+} */

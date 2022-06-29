@@ -19,7 +19,6 @@ export default function App() {
 
   function toggleCart() {
     setOpenCart((prev) => !prev)
-    console.log(openCart)
     setNotify(false)
     setClickedCart(0)
   }

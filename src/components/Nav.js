@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useRef } from "react"
 import Cart from "./Cart"
 
 export default function Nav({ cartInfo }) {
@@ -6,23 +6,33 @@ export default function Nav({ cartInfo }) {
   const cartIcon = "./images/icon-cart.svg"
   const profPhoto = "./images/image-avatar.png"
   const navLinks = ["Collections", "Men", "Women", "About", "Contact"]
+  const mobileNavRef = useRef(null)
   const navLinkElements = navLinks.map((item) => {
     return (
       <li className="nav-list-item">
-        <button onClick={cartInfo.closeMenu} className="nav__button">
+        <button
+          onClick={() => hide(cartInfo.setOpenMenu)}
+          className="nav__button"
+        >
           {item}
         </button>
       </li>
     )
   })
-  const hide = () => cartInfo.setOpenCart(false)
-  // <a href={nav.link} onClick={toggle} onBlur={hide}>{nav.text}</a>
+  function hide(stateToChange) {
+    stateToChange(false)
+    console.log("fired")
+  }
   return (
     <nav className="nav" role={"navigation"}>
       <div className="nav-cont">
         <button
           className={cartInfo.openMenu ? "burger-menu change" : "burger-menu"}
-          onClick={cartInfo.toggleMenu}
+          onClick={() => {
+            cartInfo.toggleMenu()
+            mobileNavRef.focus()
+          }}
+          onBlur={() => hide(cartInfo.setOpenMenu)}
         >
           <div className="line1"></div>
           <div className="line2"></div>
@@ -32,13 +42,17 @@ export default function Nav({ cartInfo }) {
         <ul
           className={cartInfo.openMenu ? "nav__ul nav__ul-mobile" : "nav__ul"}
           tabIndex={0}
+          ref={mobileNavRef}
         >
           {navLinkElements}
         </ul>
-        <div className="notification-cart" tabIndex={0}>
+        <div
+          className="notification-cart"
+          tabIndex={0}
+          onBlur={() => hide(cartInfo.setOpenCart)}
+        >
           <img
             onClick={cartInfo.toggleCart}
-            onBlur={hide}
             className="nav__cart-icon"
             src={cartIcon}
             alt="cart-icon"
@@ -48,6 +62,7 @@ export default function Nav({ cartInfo }) {
 
         <img
           className="prof-pic"
+          onBlur={() => hide(cartInfo.setOpenCart)}
           src={profPhoto}
           alt="prof-pic"
           tabIndex={0}

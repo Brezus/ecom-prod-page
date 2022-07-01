@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react"
 import useComponentVisible from "./useComponentVisible"
 
 export default function Cart({ cartDetails }) {
-  const { ref, isComponentVisible } = useComponentVisible(true)
+  const { ref, isComponentVisible } = useComponentVisible(false)
   const shoeImage = "./images/image-product-1-thumbnail.jpg"
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -20,13 +20,7 @@ export default function Cart({ cartDetails }) {
   }
 
   return (
-    <div
-      className="cart"
-      ref={ref}
-      style={{ display: `${isComponentVisible}` }}
-    >
-      <h4>Cart</h4>
-      <hr />
+    <>
       {cartDetails.cart ? (
         <div className="full-cart">
           <img
@@ -65,6 +59,6 @@ export default function Cart({ cartDetails }) {
           </p>
         </div>
       )}
-    </div>
+    </>
   )
 }

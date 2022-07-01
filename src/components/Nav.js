@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react"
+import Cart from "./Cart"
 import useComponentVisible from "./useComponentVisible"
 
 export default function Nav({ cartInfo }) {
@@ -24,71 +25,6 @@ export default function Nav({ cartInfo }) {
   function hide() {
     cartInfo.setOpenMenu(false)
   }
-
-  const shoeImage = "./images/image-product-1-thumbnail.jpg"
-  const formatter = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    minimumFractionDigits: 2,
-  })
-
-  const [checkedOut, setCheckedOut] = useState(false)
-
-  function checkOut() {
-    setCheckedOut(true)
-    setTimeout(() => {
-      cartInfo.setCart(false)
-    }, 2000)
-  }
-  const cartEls = (
-    <div
-      className="cart"
-      ref={ref}
-      style={{ display: `${isComponentVisible ? "block" : "none"}` }}
-    >
-      <h4>Cart</h4>
-      <hr />
-      {cartInfo.cart ? (
-        <div className="full-cart">
-          <img
-            className="full-cart__thumbnail"
-            src={shoeImage}
-            alt="product-img1"
-          />
-          <div className="full-cart__about-item">
-            <p className="full-cart-item-title">autumn limited edition...</p>
-            <p>
-              {formatter.format(cartInfo.discountPrice)} x{" "}
-              {cartInfo.currentCart.count}{" "}
-              <span className="full-cart__total">
-                {formatter.format(cartInfo.currentCart.total)}
-              </span>
-            </p>
-          </div>
-          <img
-            src="./images/icon-delete.svg"
-            alt="bin-icon"
-            onClick={cartInfo.removeFromCart}
-          />
-          <button
-            onClick={checkOut}
-            className={cartInfo.cart ? "addToCart-checkout" : "dp-none"}
-          >
-            {checkedOut ? "Placing Order..." : "Checkout"}
-          </button>
-        </div>
-      ) : (
-        <div className="empty-cart">
-          <p>
-            {checkedOut
-              ? "Thank you for your purchase."
-              : "Your cart is empty."}
-          </p>
-        </div>
-      )}
-    </div>
-  )
-
   return (
     <nav className="nav" role={"navigation"}>
       <div className="nav-cont">
@@ -96,6 +32,7 @@ export default function Nav({ cartInfo }) {
           className={cartInfo.openMenu ? "burger-menu change" : "burger-menu"}
           onClick={() => {
             cartInfo.toggleMenu()
+            // mobileNavRef.current.focus()
           }}
         >
           <div className="line1"></div>
@@ -111,14 +48,13 @@ export default function Nav({ cartInfo }) {
         >
           {navLinkElements}
         </ul>
-        <div
-          className="notification-cart"
-          tabIndex={0}
-          onClick={() => {
-            setIsComponentVisible((prev) => !prev)
-          }}
-        >
-          <img className="nav__cart-icon" src={cartIcon} alt="cart-icon" />
+        <div className="notification-cart" tabIndex={0}>
+          <img
+            onClick={cartInfo.toggleCart}
+            className="nav__cart-icon"
+            src={cartIcon}
+            alt="cart-icon"
+          />
           {cartInfo.notify && <small>{cartInfo.clickedCart}</small>}
         </div>
 
@@ -129,9 +65,21 @@ export default function Nav({ cartInfo }) {
           tabIndex={0}
           onClick={() => {
             setIsComponentVisible((prev) => !prev)
+            if (!isComponentVisible) {
+              setIsComponentVisible(true)
+            }
+            console.log("clicked")
           }}
         />
-        {cartEls}
+        <div
+          ref={ref}
+          style={{ display: `${isComponentVisible ? "block" : "none"}` }}
+          className="cart"
+        >
+          <h4>Cart</h4>
+          <hr />
+          <Cart cartDetails={cartInfo} />
+        </div>
       </div>
     </nav>
   )

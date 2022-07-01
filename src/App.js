@@ -1,7 +1,7 @@
 import "./App.css"
 import Main from "./components/Main"
 import Nav from "./components/Nav"
-import React, { useState, useEffect } from "react"
+import React, { useState, useRef } from "react"
 
 export default function App() {
   const oGPrice = 250

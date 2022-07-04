@@ -1,11 +1,11 @@
 import "./App.css"
 import Main from "./components/Main"
 import Nav from "./components/Nav"
-import React, { useState, useRef } from "react"
+import React, { useState } from "react"
 
 export default function App() {
   const oGPrice = 250
-  const discountPrice = 250 / 2
+  const discountPrice = oGPrice / 2
   const [originalPrice, setOriginalPrice] = useState(oGPrice)
   const [shoePrice, setShoePrice] = useState(discountPrice)
   const [itemCount, setItemCount] = useState(1)
@@ -67,7 +67,23 @@ export default function App() {
 
   return (
     <div>
-      <div className={openMenu ? "dark-bg" : ""}></div>
+      {openMenu && (
+        <div
+          onClick={() => {
+            setOpenMenu(false)
+          }}
+          className={"dark-bg-close-nav"}
+        ></div>
+      )}
+      {openCart && (
+        <div
+          onClick={() => {
+            setOpenCart(false)
+            console.log("clicked")
+          }}
+          className={"close-cart"}
+        ></div>
+      )}
       <Nav
         cartInfo={{
           cart,

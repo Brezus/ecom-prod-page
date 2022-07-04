@@ -1,6 +1,5 @@
-import React, { useRef, useState } from "react"
+import React, { useRef } from "react"
 import Cart from "./Cart"
-import useComponentVisible from "./useComponentVisible"
 
 export default function Nav({ cartInfo }) {
   const logo = "./images/logo.svg"
@@ -8,8 +7,6 @@ export default function Nav({ cartInfo }) {
   const profPhoto = "./images/image-avatar.png"
   const navLinks = ["Collections", "Men", "Women", "About", "Contact"]
   const mobileNavRef = useRef(null)
-  const { ref, isComponentVisible, setIsComponentVisible } =
-    useComponentVisible(false)
   const navLinkElements = navLinks.map((item) => {
     return (
       <li className="nav-list-item">
@@ -25,6 +22,7 @@ export default function Nav({ cartInfo }) {
   function hide() {
     cartInfo.setOpenMenu(false)
   }
+
   return (
     <nav className="nav" role={"navigation"}>
       <div className="nav-cont">
@@ -55,32 +53,23 @@ export default function Nav({ cartInfo }) {
             src={cartIcon}
             alt="cart-icon"
           />
-          {cartInfo.notify && <small>{cartInfo.clickedCart}</small>}
+          {cartInfo.notify && !cartInfo.openCart ? (
+            <small>{cartInfo.clickedCart}</small>
+          ) : null}
         </div>
-
         <img
           className="prof-pic"
           src={profPhoto}
           alt="prof-pic"
           tabIndex={0}
-          onClick={() => {
-            setIsComponentVisible((prev) => !prev)
-            if (!isComponentVisible) {
-              setIsComponentVisible(true)
-            }
-            console.log("clicked")
-          }}
+          onClick={cartInfo.toggleCart}
         />
-        <div
-          ref={ref}
-          style={{ display: `${isComponentVisible ? "block" : "none"}` }}
-          className="cart"
-        >
-          <h4>Cart</h4>
-          <hr />
-          <Cart cartDetails={cartInfo} />
-        </div>
+        {cartInfo.openCart && <Cart cartDetails={cartInfo} />}
       </div>
     </nav>
   )
 }
+
+// ;<div className="cart" ref={cartRef}>
+//   {cartInfo.openCart && <Cart cartDetails={cartInfo} />}
+// </div>

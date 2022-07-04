@@ -168,7 +168,7 @@ select {
   width: 70%;
   padding: 4.5em 0 0 1.5em;
 }
-.dark-bg {
+.dark-bg-close-nav {
   background-color: rgba(0, 0, 0, 0.869);
   height: 110vh;
   position: absolute;
@@ -176,6 +176,14 @@ select {
   left: 0;
   right: 0;
   z-index: 10;
+}
+.close-cart {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
 }
 
 .nav__ul.nav__ul-mobile .nav__button {
@@ -198,7 +206,7 @@ select {
 }
 .cart {
   position: absolute;
-  z-index: 1;
+  z-index: 11;
   left: 50%;
   top: 120%;
   transform: translateX(-50%);

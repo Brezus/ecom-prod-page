@@ -1,8 +1,6 @@
-import React, { useEffect, useState, useRef } from "react"
-import useComponentVisible from "./useComponentVisible"
+import React, { useState } from "react"
 
 export default function Cart({ cartDetails }) {
-  const { ref, isComponentVisible } = useComponentVisible(false)
   const shoeImage = "./images/image-product-1-thumbnail.jpg"
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -11,7 +9,6 @@ export default function Cart({ cartDetails }) {
   })
 
   const [checkedOut, setCheckedOut] = useState(false)
-
   function checkOut() {
     setCheckedOut(true)
     setTimeout(() => {
@@ -20,7 +17,9 @@ export default function Cart({ cartDetails }) {
   }
 
   return (
-    <>
+    <div className="cart">
+      <h4>Cart</h4>
+      <hr />
       {cartDetails.cart ? (
         <div className="full-cart">
           <img
@@ -59,6 +58,6 @@ export default function Cart({ cartDetails }) {
           </p>
         </div>
       )}
-    </>
+    </div>
   )
 }

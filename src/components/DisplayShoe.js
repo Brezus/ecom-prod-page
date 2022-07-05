@@ -26,7 +26,7 @@ export default function DisplayShoe() {
         naturalSlideHeight={125}
         totalSlides={imagesArray.length}
         interval={3000}
-        isPlaying={true}
+        isPlaying={false}
       >
         <Slider>{imagesHtml}</Slider>
         <ButtonBack className="carousel-buttons" id="prev-carousel">

@@ -164,7 +164,6 @@ select {
   background-color: white;
   height: 110vh;
   list-style: none;
-  padding-left: 0;
   width: 70%;
   padding: 4.5em 0 0 1.5em;
 }
@@ -200,6 +199,27 @@ select {
 .prof-pic {
   height: 100%;
 }
+.notification-cart,
+.prof-pic,
+.logo,
+.nav-list-item button,
+.full-cart button,
+.menu-icon {
+  cursor: pointer;
+}
+.nav-list-item button {
+  font-family: var(--ff);
+  font-weight: var(--fwl);
+  font-size: 1.1rem;
+  width: 100%;
+  text-align: left;
+}
+.nav-list-item button:hover {
+  color: var(--Orange);
+}
+.menu-icon {
+  z-index: 11;
+}
 
 .logo {
   margin-right: auto;
@@ -215,6 +235,8 @@ select {
   border-radius: 8px;
   overflow: hidden;
   padding: 1em 0;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 .full-cart,
 .empty-cart,
@@ -255,10 +277,12 @@ select {
 .full-cart button {
   width: 100%;
 }
+
 /* ======== main component styles ======== */
 .main {
   display: grid;
   grid-template-rows: 16rem auto;
+  padding-bottom: 3em;
 }
 /* ======== display shoe component styles ======== */
 .dp-section {
@@ -393,12 +417,27 @@ section.about-shoe {
   gap: 1em;
   font-weight: var(--fwl);
 }
-/* .dp-section,
-.about-shoe {
-} */
-/* .dp-section {
-  flex: 1;
+.about-shoe button {
+  /* box-shadow: rgba(255, 125, 26, 0.616) 0px 60px 60px -12px; */
+  box-shadow: rgba(255, 125, 26, 0.316) 0px 30px 60px -12px,
+    rgba(255, 125, 26, 0.616) 0px 18px 36px -18px;
 }
-.about-shoe {
-  flex: 3;
-} */
+@media screen and (min-width: 600px) {
+  .menu-icon {
+    display: none;
+  }
+  .nav__ul {
+    opacity: 1;
+    position: initial;
+    list-style: none;
+    display: flex;
+    padding-left: 0;
+  }
+  .nav-cont {
+    gap: em;
+  }
+  .logo {
+    margin-right: 0;
+    width: 6em;
+  }
+}

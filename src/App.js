@@ -16,7 +16,22 @@ export default function App() {
   const [currentCart, setCurrentCart] = useState({ total: 0, count: 0 })
   const [notify, setNotify] = useState(false)
   const [clickedCart, setClickedCart] = useState(0)
-
+  const closeMenuDiv = (
+    <div
+      onClick={() => {
+        setOpenMenu(false)
+      }}
+      className={"dark-bg-close-nav"}
+    ></div>
+  )
+  const closeCartDiv = (
+    <div
+      onClick={() => {
+        setOpenCart(false)
+      }}
+      className={"close-cart"}
+    ></div>
+  )
   function toggleCart() {
     setOpenCart((prev) => !prev)
     setNotify(false)
@@ -67,23 +82,8 @@ export default function App() {
 
   return (
     <div>
-      {openMenu && (
-        <div
-          onClick={() => {
-            setOpenMenu(false)
-          }}
-          className={"dark-bg-close-nav"}
-        ></div>
-      )}
-      {openCart && (
-        <div
-          onClick={() => {
-            setOpenCart(false)
-            console.log("clicked")
-          }}
-          className={"close-cart"}
-        ></div>
-      )}
+      {openMenu && closeMenuDiv}
+      {openCart && closeCartDiv}
       <Nav
         cartInfo={{
           cart,

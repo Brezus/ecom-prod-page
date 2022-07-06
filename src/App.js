@@ -79,45 +79,43 @@ export default function App() {
     )
     setOriginalPrice((prevPrice) => (prevPrice === 0 ? 0 : prevPrice - oGPrice))
   }
+  const navProps = {
+    cart,
+    setCart,
+    setOpenCart,
+    setOpenMenu,
+    itemCount,
+    shoePrice,
+    originalPrice,
+    discountPrice,
+    openCart,
+    toggleCart,
+    removeFromCart,
+    currentCart,
+    toggleMenu,
+    openMenu,
+    notify,
+    closeMenu,
+    clickedCart,
+  }
+  const mainProps = {
+    itemCount,
+    addItem,
+    minusItem,
+    shoePrice,
+    originalPrice,
+    discount,
+    cart,
+    addToCart,
+    removeFromCart,
+  }
 
   return (
     <div>
       {openMenu && closeMenuDiv}
       {openCart && closeCartDiv}
-      <Nav
-        cartInfo={{
-          cart,
-          setCart,
-          setOpenCart,
-          setOpenMenu,
-          itemCount,
-          shoePrice,
-          originalPrice,
-          discountPrice,
-          openCart,
-          toggleCart,
-          removeFromCart,
-          currentCart,
-          toggleMenu,
-          openMenu,
-          notify,
-          closeMenu,
-          clickedCart,
-        }}
-      />
-      <Main
-        count={{
-          itemCount,
-          addItem,
-          minusItem,
-          shoePrice,
-          originalPrice,
-          discount,
-          cart,
-          addToCart,
-          removeFromCart,
-        }}
-      />
+      <Nav props={navProps} />
+      <Main count={mainProps} />
     </div>
   )
 }

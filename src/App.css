@@ -86,6 +86,70 @@ select {
     scroll-behavior: auto !important;
   }
 }
+/* ======== typography ======== */
+body,
+.nav__ul.nav__ul-mobile .nav__button,
+.nav-list-item button {
+  font-family: var(--ff);
+}
+.notification-cart small {
+  font-size: 10px;
+}
+.nav-list-item button {
+  font-size: 1.1rem;
+  text-align: left;
+}
+.empty-cart,
+.nav__ul.nav__ul-mobile .nav__button,
+.nav-list-item button,
+.full-cart__total,
+.discount,
+.og-price,
+.price,
+.quantity-cont button,
+.addToCart-checkout {
+  font-weight: var(--fwl);
+}
+
+.price {
+  font-size: 1.4rem;
+}
+.full-cart-item-title {
+  text-transform: capitalize;
+}
+.item-desc {
+  font-size: 0.9rem;
+}
+.discount {
+  color: var(--Orange);
+  font-size: 1rem;
+}
+.og-price {
+  color: var(--Grayish-blue);
+  text-decoration: line-through;
+}
+.quantity-cont button,
+.quantity-cont p {
+  text-align: center;
+}
+.quantity-cont button {
+  font-size: 1.4em;
+  text-align: left;
+}
+.titles h4,
+.quantity-cont button {
+  color: var(--Orange);
+}
+
+.quantity-cont button:last-of-type {
+  text-align: right;
+}
+.addToCart-checkout {
+  color: white;
+}
+.item-desc {
+  font-size: 0.9rem;
+}
 /* ======== navigation component styles ======== */
 .burger-menu {
   display: inline-block;
@@ -132,7 +196,6 @@ select {
   align-items: center;
   text-align: center;
   border-radius: 3px;
-  font-size: 10px;
   background-color: var(--Orange);
   color: white;
 }
@@ -140,7 +203,6 @@ select {
 .nav {
   padding: 1em 1.5em;
   position: relative;
-  font-family: var(--ff);
 }
 .nav-cont {
   display: flex;
@@ -188,8 +250,6 @@ select {
 .nav__ul.nav__ul-mobile .nav__button {
   border: none;
   background-color: transparent;
-  font-weight: var(--fwl);
-  font-family: var(--ff);
   margin-bottom: 1.1em;
 }
 .nav__cart-icon {
@@ -208,11 +268,7 @@ select {
   cursor: pointer;
 }
 .nav-list-item button {
-  font-family: var(--ff);
-  font-weight: var(--fwl);
-  font-size: 1.1rem;
   width: 100%;
-  text-align: left;
 }
 .nav-list-item button:hover {
   color: var(--Orange);
@@ -263,15 +319,12 @@ select {
   height: 150px;
 }
 .empty-cart {
-  font-weight: var(--fwl);
-  font-family: var(--ff);
   justify-content: center;
 }
 .full-cart-item-title {
   text-transform: capitalize;
 }
 .full-cart__total {
-  font-weight: var(--fwl);
   color: black;
 }
 .full-cart button {
@@ -330,7 +383,6 @@ select {
 }
 /* ======== about shoe component styles ======== */
 section.about-shoe {
-  font-family: var(--ff);
   padding: 1.5em;
 }
 .titles {
@@ -338,23 +390,11 @@ section.about-shoe {
   flex-direction: column-reverse;
   gap: 0.8em;
 }
-.titles h4 {
-  color: var(--Orange);
-  font-weight: var(--fwl);
-  font-size: 0.7em;
-  text-transform: uppercase;
-}
-.titles h1 {
-  font-weight: var(--fwl);
-  line-height: 1.1;
-  color: var(--Very--vark--blue);
-  font-size: 1.8rem;
-}
+
 .item-desc {
   margin: 1em 0;
   color: var(--Very--vark--blue);
   opacity: 0.8;
-  font-size: 0.9rem;
 }
 .price-cont {
   display: flex;
@@ -362,25 +402,14 @@ section.about-shoe {
   align-items: center;
   margin-bottom: 1em;
 }
-.price {
-  font-weight: var(--fwl);
-  color: var(--Very--vark--blue);
-  font-size: 1.8rem;
-}
+
 .discount {
   background-color: var(--Pale-orange);
   color: var(--Orange);
-  font-size: 1rem;
   padding: 0.1em 0.5em;
   border-radius: 3px;
-  font-weight: var(--fwl);
 }
-.og-price {
-  margin-left: auto;
-  color: var(--Grayish-blue);
-  text-decoration: line-through;
-  font-weight: var(--fwl);
-}
+
 .quantity-cont {
   display: flex;
   background-color: var(--Light-grayish-blue);
@@ -396,15 +425,7 @@ section.about-shoe {
   background-color: transparent;
   border: none;
 }
-.quantity-cont button {
-  color: var(--Orange);
-  font-size: 1.4em;
-  font-weight: var(--fwl);
-  text-align: left;
-}
-.quantity-cont button:last-of-type {
-  text-align: right;
-}
+
 .addToCart-checkout {
   background-color: var(--Orange);
   border: none;
@@ -413,9 +434,7 @@ section.about-shoe {
   display: flex;
   justify-content: center;
   padding: 0.5em;
-  color: white;
   gap: 1em;
-  font-weight: var(--fwl);
 }
 .about-shoe button {
   /* box-shadow: rgba(255, 125, 26, 0.616) 0px 60px 60px -12px; */
@@ -423,8 +442,58 @@ section.about-shoe {
     rgba(255, 125, 26, 0.616) 0px 18px 36px -18px;
 }
 @media screen and (min-width: 600px) {
+  /* typography */
+  .titles h1 {
+    font-size: 2rem;
+  }
+  .titles h4 {
+    font-size: 1.2rem;
+  }
+  .item-desc {
+    font-size: 1rem;
+  }
+  .logo {
+    margin-right: 0;
+    margin-inline: auto;
+    /* width: 6em; */
+  }
+  .prof-pic {
+    margin-left: 1.1em;
+  }
+
+  .nav-cont {
+    height: 50px;
+    gap: 0;
+    /* justify-content: space-around; */
+  }
+  .notification-cart {
+    display: flex;
+    align-items: center;
+  }
+  .main {
+    text-align: center;
+    grid-template-rows: 24rem auto;
+  }
+  .price-cont {
+    justify-content: center;
+  }
+
+  .addToCart-checkout,
+  .quantity-cont {
+    width: 50%;
+    margin-inline: auto;
+    align-items: center;
+  }
+  .addToCart-checkout {
+    font-size: 1.4em;
+  }
+}
+@media screen and (min-width: 800px) {
   .menu-icon {
     display: none;
+  }
+  .nav-cont {
+    justify-content: space-between;
   }
   .nav__ul {
     opacity: 1;
@@ -434,10 +503,10 @@ section.about-shoe {
     padding-left: 0;
   }
   .nav-cont {
-    gap: em;
+    gap: 0em;
   }
   .logo {
-    margin-right: 0;
-    width: 6em;
+    margin: 0;
+    /* width: 6em; */
   }
 }

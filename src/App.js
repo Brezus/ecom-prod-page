@@ -9,7 +9,7 @@ export default function App() {
   const [originalPrice, setOriginalPrice] = useState(oGPrice)
   const [shoePrice, setShoePrice] = useState(discountPrice)
   const [itemCount, setItemCount] = useState(1)
-  const [discount, setDiscount] = useState(true)
+  const discount = true
   const [cart, setCart] = useState(false)
   const [openCart, setOpenCart] = useState(false)
   const [openMenu, setOpenMenu] = useState(false)
@@ -45,7 +45,16 @@ export default function App() {
   }
 
   function addToCart() {
-    if (itemCount === 0) return
+    if (itemCount === 0) {
+      setNotify(false)
+      setCurrentCart((prev) => {
+        return {
+          ...prev,
+          count: 0,
+        }
+      })
+      return
+    }
     setCart(true)
     setNotify(true)
     setClickedCart((prev) => prev + 1)
@@ -79,43 +88,46 @@ export default function App() {
     )
     setOriginalPrice((prevPrice) => (prevPrice === 0 ? 0 : prevPrice - oGPrice))
   }
-  const navProps = {
-    cart,
-    setCart,
-    setOpenCart,
-    setOpenMenu,
-    itemCount,
-    shoePrice,
-    originalPrice,
-    discountPrice,
-    openCart,
-    toggleCart,
-    removeFromCart,
-    currentCart,
-    toggleMenu,
-    openMenu,
-    notify,
-    closeMenu,
-    clickedCart,
-  }
-  const mainProps = {
-    itemCount,
-    addItem,
-    minusItem,
-    shoePrice,
-    originalPrice,
-    discount,
-    cart,
-    addToCart,
-    removeFromCart,
-  }
 
   return (
     <div>
       {openMenu && closeMenuDiv}
       {openCart && closeCartDiv}
-      <Nav props={navProps} />
-      <Main count={mainProps} />
+      <Nav
+        cartInfo={{
+          cart,
+          setCart,
+          setOpenCart,
+          setOpenMenu,
+          setCurrentCart,
+          itemCount,
+          shoePrice,
+          originalPrice,
+          discountPrice,
+          openCart,
+          toggleCart,
+          removeFromCart,
+          currentCart,
+          toggleMenu,
+          openMenu,
+          notify,
+          closeMenu,
+          clickedCart,
+        }}
+      />
+      <Main
+        count={{
+          itemCount,
+          addItem,
+          minusItem,
+          shoePrice,
+          originalPrice,
+          discount,
+          cart,
+          addToCart,
+          removeFromCart,
+        }}
+      />
     </div>
   )
 }

@@ -40,6 +40,7 @@ export default function Nav({ cartInfo }) {
       onClick={toggleCart}
     />
   )
+
   const notificationComp = (
     <div className="notification-cart" tabIndex={0} onClick={toggleCart}>
       {cartSvg}

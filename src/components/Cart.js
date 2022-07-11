@@ -10,6 +10,7 @@ export default function Cart({ cartDetails }) {
     currentCart,
     removeFromCart,
     setCurrentCart,
+    itemCount,
   } = cartDetails
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -27,7 +28,7 @@ export default function Cart({ cartDetails }) {
       })
     }, 2000)
   }
-
+  console.log(itemCount)
   return (
     <div className="cart">
       <h4>Cart</h4>

@@ -45,16 +45,6 @@ export default function App() {
   }
 
   function addToCart() {
-    if (itemCount === 0) {
-      setNotify(false)
-      setCurrentCart((prev) => {
-        return {
-          ...prev,
-          count: 0,
-        }
-      })
-      return
-    }
     setCart(true)
     setNotify(true)
     setClickedCart((prev) => prev + 1)
@@ -67,12 +57,9 @@ export default function App() {
   }
   function removeFromCart() {
     setCart(false)
-    setClickedCart((prev) => prev - 1)
+    setClickedCart(0)
     setCurrentCart((prev) => {
-      return {
-        total: 0,
-        count: 0,
-      }
+      return { ...prev, total: 0, count: 0 }
     })
   }
 
@@ -88,6 +75,7 @@ export default function App() {
     )
     setOriginalPrice((prevPrice) => (prevPrice === 0 ? 0 : prevPrice - oGPrice))
   }
+  console.log(currentCart.count)
 
   return (
     <div>

@@ -249,7 +249,7 @@ body,
   z-index: 2;
 }
 
-.nav__ul.nav__ul-mobile .nav__button {
+.nav__button {
   border: none;
   background-color: transparent;
   margin-bottom: 1.1em;
@@ -498,7 +498,7 @@ body,
     font-size: 1.4em;
   }
 }
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 830px) {
   /* typography */
   .titles h4 {
     font-size: 0.7rem;
@@ -552,7 +552,7 @@ body,
   }
 
   .nav__ul {
-    gap: 1em;
+    gap: 0.5em;
   }
   .nav__button {
     border: none;
@@ -585,7 +585,7 @@ body,
   }
   .logo {
     margin: 0;
-    /* width: 6em; */
+    width: 6em;
   }
   .main {
     text-align: center;
@@ -619,6 +619,7 @@ body,
     height: 100%;
     width: 100%;
     object-fit: cover;
+    object-position: 50% 0;
   }
   .main-dp {
     width: auto;
@@ -684,6 +685,31 @@ body,
   .main {
     grid-template-rows: 32rem;
     grid-template-columns: 1fr 1fr;
-    gap: 7em;
+    gap: 2em;
+    align-items: start;
+  }
+  .my-carousel,
+  .secondary-dp {
+    width: 80%;
+    margin-inline: auto;
+  }
+  .dp-section {
+    overflow: initial;
+    grid-template-rows: 2fr 1fr;
+  }
+
+  .secondary-dp {
+    overflow: initial;
+  }
+
+  .about-shoe {
+    margin-top: 2em;
+  }
+  .logo {
+    width: 8rem;
+  }
+  .nav {
+    padding-top: 0;
+    margin-bottom: 2.5em;
   }
 }

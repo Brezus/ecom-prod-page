@@ -75,7 +75,6 @@ export default function App() {
     )
     setOriginalPrice((prevPrice) => (prevPrice === 0 ? 0 : prevPrice - oGPrice))
   }
-  console.log(currentCart.count)
 
   return (
     <div>
